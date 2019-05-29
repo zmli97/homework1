@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 //白欣宇 实体类考试信息
 @Getter
@@ -29,6 +26,8 @@ public class ExamInfo {
     private int needCount =1 ;  /*所需人数*/
     private int teacherId;   /*教师编号*/
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User teacher;
     public ExamInfo(int id) {
         this.examInfoId= id;
     }
