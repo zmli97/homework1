@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class UserService {
+public class UserService{
     @Autowired
     private UserRepository userRepository;
     public User getUser(String number) {
