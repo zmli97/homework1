@@ -13,8 +13,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 public class ExamInfo {
-
-    public static final int EXAMINFO_NEEDCOUNT = 1;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
