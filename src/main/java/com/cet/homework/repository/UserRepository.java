@@ -1,78 +1,21 @@
 package com.cet.homework.repository;
 
 import com.cet.homework.entity.User;
-import org.apache.tomcat.jni.Address;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.List;
-//白欣宇 用户信息管理
 @Repository
 @Transactional
-public class UserRepository {
-    @PersistenceContext
-    private EntityManager em;
-
+public interface UserRepository extends JpaRepository<User, Integer> {
     /**
-     * 添加用户，并返回包括数据库时间戳的用户对象
-     * @param user
+     * 获取指定ID的用户
+     * @param id
      * @return
      */
-    public User addUser(User user) {
-        return null;
-    }
+    @Query("SELECT u FROM User u WHERE u.id=:id")
+    User find(@Param("id") int id);
 
-    /**
-     * 添加地址，并指定地址对应的用户
-     * @param address
-     * @param uid
-     * @return
-     */
-    public Address addAddress(Address address, int uid) {
-        return null;
-    }
-
-    /**
-     * 更新指定ID用户的姓名
-     * @param uid
-     * @param newName
-     * @return
-     */
-    public User updateUser(int uid, String newName) {
-        return null;
-    }
-
-    /**
-     * 尝试使用merge()，以及find()2种方法分别实现
-     * 更新指定地址为指定用户
-     * @param aid
-     * @param uid
-     * @return
-     */
-    public Address updateAddress(int aid, int uid) {
-        return null;
-    }
-
-    /**
-     * 返回指定用户的全部地址，没有返回空集合，而非null
-     * @param uid
-     * @return
-     */
-    public List<Address> listAddresses(int uid) {
-        return List.of();
-    }
-
-    public void removeAddress(int aid) {
-
-    }
-
-    /**
-     * 删除用户，设置级联操作或手动删除相关地址
-     * @param uid
-     */
-    public void remaveUser(int uid) {
-
-    }
 }
