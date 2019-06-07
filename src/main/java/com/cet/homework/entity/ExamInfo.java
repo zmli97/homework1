@@ -24,7 +24,10 @@ public class ExamInfo {
     private String className; /*课程*/
     // 在没有声明时默认为1
     private int needCount =1 ;  /*所需人数*/
-
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",
+            updatable = false,
+            insertable = false)
+    private LocalDateTime insertTime;
     @ManyToOne(fetch = FetchType.LAZY)
     private User teacher;
     public ExamInfo(int id) {
